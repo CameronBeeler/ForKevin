@@ -34,6 +34,7 @@ public class Main {
             letter.add(aLetter);
         }
 
+        Map<String, Integer> letterNumberMap = new HashMap<>();
 
         //wordcount
         System.out.println("Word count = " + wordCount);
@@ -54,6 +55,32 @@ public class Main {
                 }
             }
             System.out.println(aLetter + ": " + aLetterCount);
+        }
+        // to make the map work, I'd need a set based loop with a count on each value going into the map.
+
+        System.out.println("\n\nTRYING WITH MAP\n\n");
+        Iterator<String> letterIterator3 = letter.iterator();
+        for(int i=0;i<letter.size(); i++)
+        {
+            String z = letterIterator3.next();
+            int aLetterCount=0;
+
+            for (int j=0;j<s.length();j++)
+            {
+
+                if(z.equals(s.substring(j, j+1)))
+                {
+                    aLetterCount++;
+                }
+            }
+            letterNumberMap.put(z, aLetterCount);
+        }
+
+        Iterator<String> letterIterator2 = letter.iterator();
+        while(letterIterator2.hasNext())
+        {
+            String a = letterIterator2.next().toString();
+            System.out.println(a + ": " + letterNumberMap.get(a));
         }
     }
 }
