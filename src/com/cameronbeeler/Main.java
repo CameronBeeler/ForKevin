@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Main {
 
+    public static SDOCollection collect = SDOCollection.CreateTheMasterSDOCollection();
     public static void main(String[] args)
     {
 //        String s = "Abracadabra      Alakazam!!";
@@ -15,6 +16,7 @@ public class Main {
         int wordCount = 0;
         for ( int i=0 ; i < playful.length; i++)
         {
+
             int outputIndex = 0;
             if (!playful[i].isBlank())
             {
@@ -32,7 +34,11 @@ public class Main {
         {
             aLetter = s.substring(i, i+1);
             letter.add(aLetter);
+
+            collect.CreateUpdateDataObject(aLetter);
         }
+
+
 
         Map<String, Integer> letterNumberMap = new HashMap<>();
 
@@ -42,6 +48,8 @@ public class Main {
         System.out.println("Non-whitespace character count = " + characterLength.length());
         //Unique breakdown of all characters in the order they appear
         System.out.println("Unique breakdown of all characters in order they appeared...");
+        collect.printDataObjectCollection();
+        /*
         Iterator<String> letterIterator = letter.iterator();
         while (letterIterator.hasNext())
         {
@@ -49,6 +57,7 @@ public class Main {
             int aLetterCount = 0;
             for(int i=0;i<s.length();i++)
             {
+
                 if(aLetter.equals(s.substring(i, i+1)))
                 {
                     aLetterCount++;
@@ -82,5 +91,6 @@ public class Main {
             String a = letterIterator2.next().toString();
             System.out.println(a + ": " + letterNumberMap.get(a));
         }
+        */
     }
 }
